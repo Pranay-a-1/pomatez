@@ -61,7 +61,11 @@ export const registerPersistentPopupEvents = () => {
   });
 
   ipcMain.on(UPDATE_POPUP_TIME, (event, data) => {
-    if (popupWindow && !popupWindow.isDestroyed() && popupWindow.isVisible()) {
+    if (
+      popupWindow &&
+      !popupWindow.isDestroyed() &&
+      popupWindow.isVisible()
+    ) {
       const isDarkMode = store.safeGet("isDarkMode");
       popupWindow.webContents.send(UPDATE_POPUP_TIME, {
         ...data,
