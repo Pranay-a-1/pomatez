@@ -20,10 +20,13 @@ import {
   SET_OPEN_AT_LOGIN,
   SET_RPC_ACTIVITY,
   SET_ENABLE_RPC,
+  SHOW_PERSISTENT_POPUP,
+  UPDATE_POPUP_TIME,
 } from "@pomatez/shareables";
 import { InvokeConnector } from "../InvokeConnector";
 import { useTrayIconUpdates } from "hooks/useTrayIconUpdates";
 import { TimerStatus } from "store/timer/types";
+import { padNum } from "utils";
 
 export const ElectronInvokeConnector: InvokeConnector = {
   send: (event: string, ...payload: any) => {
@@ -171,6 +174,37 @@ export const ElectronConnectorProvider: React.FC = ({ children }) => {
       enableRPC: settings.enableRPC,
     });
   }, [electron, settings.enableRPC]);
+
+  useEffect(() => {
+    if (settings.enablePersistentNotification) {
+      electron.send(SHOW_PERSISTENT_POPUP);
+    }
+  }, [electron, settings.enablePersistentNotification, timer.timerType]);
+
+  useEffect(() => {
+    if (settings.enablePersistentNotification) {
+      let phase = "Focus";
+      if (timer.timerType === TimerStatus.SHORT_BREAK) phase = "Short Break";
+      else if (timer.timerType === TimerStatus.LONG_BREAK)
+        phase = "Long Break";
+      else if (timer.timerType === TimerStatus.SPECIAL_BREAK)
+        phase = "Special Break";
+
+      const minutes = Math.floor(count / 60);
+      const seconds = count % 60;
+      const time = `${padNum(minutes)}:${padNum(seconds)}`;
+
+      electron.send(UPDATE_POPUP_TIME, {
+        phase,
+        time,
+      });
+    }
+  }, [
+    electron,
+    settings.enablePersistentNotification,
+    count,
+    timer.timerType,
+  ]);
 
   useTrayIconUpdates((dataUrl) => {
     electron.send(TRAY_ICON_UPDATE, dataUrl);

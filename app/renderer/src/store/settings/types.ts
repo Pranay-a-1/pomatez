@@ -18,6 +18,7 @@ export type SettingTypes = {
   notificationType: NotificationTypes;
   openAtLogin: boolean;
   enableRPC: boolean;
+  enablePersistentNotification: boolean;
 };
 
 export const enum NotificationTypes {

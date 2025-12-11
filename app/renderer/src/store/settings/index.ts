@@ -148,6 +148,13 @@ const settingsSlice = createSlice({
       state.enableRPC = action.payload;
     },
 
+    setEnablePersistentNotification(
+      state,
+      action: SettingsPayload<"enablePersistentNotification">
+    ) {
+      state.enablePersistentNotification = action.payload;
+    },
+
     restoreDefaultSettings() {
       return defaultSettings;
     },
@@ -171,6 +178,7 @@ export const {
   setNotificationType,
   setOpenAtLogin,
   setEnableRPC,
+  setEnablePersistentNotification,
   setUseNativeTitlebar,
   toggleNotificationSound,
 } = settingsSlice.actions;

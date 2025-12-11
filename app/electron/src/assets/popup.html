@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomatez</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #2e3b4e; /* Dark theme default */
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        #phase-title {
+            font-size: 16px;
+            margin-bottom: 10px;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        #timer {
+            font-size: 40px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-variant-numeric: tabular-nums;
+        }
+        #ok-btn {
+            background-color: #f25b50; /* Pomatez red */
+            color: white;
+            border: none;
+            padding: 8px 24px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        #ok-btn:hover {
+            background-color: #d1493e;
+        }
+    </style>
+</head>
+<body>
+    <div id="phase-title">...</div>
+    <div id="timer">00:00</div>
+    <button id="ok-btn">OK</button>
+    <script>
+        const { ipcRenderer } = require('electron');
+
+        const titleEl = document.getElementById('phase-title');
+        const timerEl = document.getElementById('timer');
+        const btnEl = document.getElementById('ok-btn');
+
+        ipcRenderer.on('UPDATE_POPUP_TIME', (event, data) => {
+            const { time, phase, theme } = data;
+            if (time) timerEl.textContent = time;
+            if (phase) titleEl.textContent = phase;
+
+            // Optional: Simple theme handling
+            if (theme === 'light') {
+                document.body.style.backgroundColor = '#ffffff';
+                document.body.style.color = '#2e3b4e';
+            } else {
+                document.body.style.backgroundColor = '#2e3b4e';
+                document.body.style.color = '#ffffff';
+            }
+        });
+
+        btnEl.addEventListener('click', () => {
+            ipcRenderer.send('HIDE_PERSISTENT_POPUP');
+        });
+    </script>
+</body>
+</html>
