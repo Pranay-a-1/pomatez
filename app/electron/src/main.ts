@@ -45,6 +45,7 @@ import {
   FullscreenState,
   setFullscreenBreakHandler,
 } from "./lifecycleEventHandlers/fullScreenBreak";
+import { registerPersistentPopupEvents } from "./lifecycleEventHandlers/persistentPopup";
 import WindowsToaster from "node-notifier/notifiers/toaster";
 import NotificationCenter from "node-notifier/notifiers/notificationcenter";
 
@@ -374,6 +375,8 @@ if (!onlySingleInstance) {
       },
     });
   });
+
+  registerPersistentPopupEvents();
 }
 
 ipcMain.on(SET_ALWAYS_ON_TOP, (e, { alwaysOnTop }) => {

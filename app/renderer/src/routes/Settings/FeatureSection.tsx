@@ -14,6 +14,7 @@ import {
   setEnableCompactMode,
   setOpenAtLogin,
   setEnableRPC,
+  setEnablePersistentNotification,
   setFollowSystemTheme,
 } from "store";
 import { Toggler, TogglerProps, Collapse, Radio } from "components";
@@ -156,6 +157,23 @@ const FeatureSection: React.FC = () => {
       onChange: useCallback(() => {
         dispatch(setEnableRPC(!settings.enableRPC));
       }, [dispatch, settings.enableRPC]),
+    },
+    {
+      id: "enable-persistent-notification",
+      label: "Persistent Notification",
+      checked: settings.enablePersistentNotification,
+      onChange: useCallback(() => {
+        dispatch(
+          setEnablePersistentNotification(
+            !settings.enablePersistentNotification
+          )
+        );
+      }, [dispatch, settings.enablePersistentNotification]),
+      style: {
+        ...(detectOS() !== "Linux" && {
+          display: "none",
+        }),
+      },
     },
   ];
 
