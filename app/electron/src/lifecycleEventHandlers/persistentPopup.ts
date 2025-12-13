@@ -39,7 +39,9 @@ const createPopupWindow = () => {
 
   // Keep it always on top even if other windows try to take focus
   popupWindow.setAlwaysOnTop(true, "screen-saver");
-  popupWindow.setVisibleOnAllWorkspaces(true, { visibleOnFullScreen: true });
+  popupWindow.setVisibleOnAllWorkspaces(true, {
+    visibleOnFullScreen: true,
+  });
 };
 
 export const registerPersistentPopupEvents = () => {
