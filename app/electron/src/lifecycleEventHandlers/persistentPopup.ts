@@ -39,7 +39,9 @@ const createPopupWindow = () => {
 
   // Keep it always on top even if other windows try to take focus
   popupWindow.setAlwaysOnTop(true, "screen-saver");
-  popupWindow.setVisibleOnAllWorkspaces(true, { visibleOnFullScreen: true });
+  popupWindow.setVisibleOnAllWorkspaces(true, {
+    visibleOnFullScreen: true,
+  });
 };
 
 export const registerPersistentPopupEvents = () => {
@@ -61,7 +63,11 @@ export const registerPersistentPopupEvents = () => {
   });
 
   ipcMain.on(UPDATE_POPUP_TIME, (event, data) => {
-    if (popupWindow && !popupWindow.isDestroyed() && popupWindow.isVisible()) {
+    if (
+      popupWindow &&
+      !popupWindow.isDestroyed() &&
+      popupWindow.isVisible()
+    ) {
       const isDarkMode = store.safeGet("isDarkMode");
       popupWindow.webContents.send(UPDATE_POPUP_TIME, {
         ...data,

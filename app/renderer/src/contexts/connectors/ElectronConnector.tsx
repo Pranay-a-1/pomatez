@@ -179,12 +179,17 @@ export const ElectronConnectorProvider: React.FC = ({ children }) => {
     if (settings.enablePersistentNotification) {
       electron.send(SHOW_PERSISTENT_POPUP);
     }
-  }, [electron, settings.enablePersistentNotification, timer.timerType]);
+  }, [
+    electron,
+    settings.enablePersistentNotification,
+    timer.timerType,
+  ]);
 
   useEffect(() => {
     if (settings.enablePersistentNotification) {
       let phase = "Focus";
-      if (timer.timerType === TimerStatus.SHORT_BREAK) phase = "Short Break";
+      if (timer.timerType === TimerStatus.SHORT_BREAK)
+        phase = "Short Break";
       else if (timer.timerType === TimerStatus.LONG_BREAK)
         phase = "Long Break";
       else if (timer.timerType === TimerStatus.SPECIAL_BREAK)
