@@ -1,5 +1,35 @@
 # Changelog
 
+## [1.10.0](https://github.com/Pranay-a-1/pomatez/compare/v1.9.0...v1.10.0) (2025-12-13)
+
+
+### Features ✨
+
+* add persistent popup for Linux ([0382b2e](https://github.com/Pranay-a-1/pomatez/commit/0382b2eca935100c8ea006b6e4b5d9051324cc52))
+* add persistent popup for Linux and GH Action ([57ddf39](https://github.com/Pranay-a-1/pomatez/commit/57ddf39238c4d7f359ff42e4be92683e931bab42))
+* add persistent popup for Linux and GH Action ([2ddb33c](https://github.com/Pranay-a-1/pomatez/commit/2ddb33c555907309dfaf207459077d5f4bd8d61f))
+* add persistent popup for Linux and GH Action ([97c01fd](https://github.com/Pranay-a-1/pomatez/commit/97c01fd3ab2e783531ac5f74e5fdbae637fee8e7))
+* add setting to follow the system theme ([#690](https://github.com/Pranay-a-1/pomatez/issues/690)) ([96b2318](https://github.com/Pranay-a-1/pomatez/commit/96b2318f881ab753d6ba6024c31e6b809ddc42db))
+* allow user to input shortcuts in the Shortcut component (requires backend changes) ([#523](https://github.com/Pranay-a-1/pomatez/issues/523)) ([47ecece](https://github.com/Pranay-a-1/pomatez/commit/47ececea7ae9c929215e064272ef4e57004d615e))
+* **electron:** Discord Rich Presence ([#700](https://github.com/Pranay-a-1/pomatez/issues/700)) ([de82067](https://github.com/Pranay-a-1/pomatez/commit/de82067f7090812fae149eaf50d477ddb6c9994d))
+* hide preview button when the text in not being edited ([#657](https://github.com/Pranay-a-1/pomatez/issues/657)) ([b1ed5af](https://github.com/Pranay-a-1/pomatez/commit/b1ed5af1ec9012a3b14a762bcc1658d7d9dee0f4))
+
+
+### Bug Fixes 🐛
+
+* add extra logic to keep track of time accurately when in the background ([#664](https://github.com/Pranay-a-1/pomatez/issues/664)) ([5276215](https://github.com/Pranay-a-1/pomatez/commit/52762152aa5b4a5eee0b679342966df14b04339f)), closes [#608](https://github.com/Pranay-a-1/pomatez/issues/608)
+* add word wrapping for card titles ([#637](https://github.com/Pranay-a-1/pomatez/issues/637)) ([a63a21e](https://github.com/Pranay-a-1/pomatez/commit/a63a21ec3e98f433ad8e18e1425f731cd922fc0d))
+* electron and tauri signing (release 1.6.3 was skipped) ([6442717](https://github.com/Pranay-a-1/pomatez/commit/64427172d5721f9384d0d7f5ebf26c8130938812))
+* **electron:** discord rpc not initialising on start ([#717](https://github.com/Pranay-a-1/pomatez/issues/717)) ([df4e2b4](https://github.com/Pranay-a-1/pomatez/commit/df4e2b47619805b4e649328a3bb4dfbe6dad0285))
+* mac signing for electron and tauri ([2c542fe](https://github.com/Pranay-a-1/pomatez/commit/2c542feec3f243847dd685913d093f2a48395b00))
+* react warning that was blocking the previous release ([#666](https://github.com/Pranay-a-1/pomatez/issues/666)) ([c2f0861](https://github.com/Pranay-a-1/pomatez/commit/c2f0861f3400f028fe6c767b1af6d33da60edd92))
+* typo with "stay focused" ([9c5cbd6](https://github.com/Pranay-a-1/pomatez/commit/9c5cbd616d4e6a063ae293acaec951da7e6d09f2))
+
+
+### Reverts ⏪️
+
+* remove google analytics in the app ([#610](https://github.com/Pranay-a-1/pomatez/issues/610)) ([95dae58](https://github.com/Pranay-a-1/pomatez/commit/95dae58e67f449a161dbd5e86daffe447ef3883d)), closes [#609](https://github.com/Pranay-a-1/pomatez/issues/609)
+
 ## [1.9.0](https://github.com/zidoro/pomatez/compare/v1.8.0...v1.9.0) (2025-11-09)
 
 
